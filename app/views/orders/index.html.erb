@@ -1,0 +1,48 @@
+<div class="orders-container">
+  <h1>Orders</h1>
+  <hr class="header-divider">
+
+  <div class="orders-list">
+    <% @orders.each do |order| %>
+      <div class="order-entry" id="order-<%= order.id %>">
+        <div class="order-grid">
+          <!-- Left Column: Metadata and Action -->
+          <div class="meta-column">
+            <div class="meta-row"><strong>ID:</strong> <%= order.uuid %></div>
+            <div class="meta-row"><strong>Created:</strong> <%= order.created_at.strftime("%B %d, %Y %H:%M") %></div>
+            <div class="meta-row"><strong>Promotion Codes:</strong> <%= order.promotion_codes.any? ? order.promotion_codes.join(', ') : '-' %></div>
+            <div class="meta-row"><strong>Discount Codes:</strong> <%= order.discount_code || '-' %></div>
+            
+            <div class="price-section">
+              <p class="total-price">Total Price: <%= number_to_currency(order.total_price, unit: '€', format: "%n%u") %></p>
+              <%= button_to 'Complete', order_path(order), method: :patch, remote: true, class: 'btn-complete' %>
+            </div>
+          </div>
+
+          <!-- Right Column: Items -->
+          <div class="items-column">
+            <h3>Items:</h3>
+            <ul class="items-list">
+              <% order.order_items.each do |item| %>
+                <li class="pizza-item">
+                  <span class="pizza-name"><%= item.name %> (<%= item.size %>)</span>
+                  <% if item.add.any? || item.remove.any? %>
+                    <ul class="details-list">
+                      <% item.add.each do |add| %>
+                        <li>Add: <%= add %></li>
+                      <% end %>
+                      <% item.remove.each do |remove| %>
+                        <li>Remove: <%= remove %></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <hr class="order-divider">
+      </div>
+    <% end %>
+  </div>
+</div>

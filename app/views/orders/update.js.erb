@@ -1,0 +1,7 @@
+var orderCard = document.getElementById('order-<%= @order.id %>');
+if (orderCard) {
+  orderCard.classList.add('removing');
+  setTimeout(function() {
+    orderCard.remove();
+  }, 500);
+}

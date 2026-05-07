@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  --primary-color: #000;
+  --bg-color: #ffffff;
+  --text-color: #000;
+  --divider-color: #000;
+  --font-main: 'Outfit', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 40px;
+  line-height: 1.5;
+}
+
+.orders-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.header-divider {
+  border: 0;
+  border-top: 2px solid var(--divider-color);
+  margin-bottom: 30px;
+}
+
+.order-divider {
+  border: 0;
+  border-top: 1px solid var(--divider-color);
+  margin: 40px 0;
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  min-height: 200px;
+}
+
+/* Left Column Styling */
+.meta-row {
+  margin-bottom: 6px;
+  font-size: 1.1rem;
+}
+
+.price-section {
+  margin-top: 40px;
+}
+
+.total-price {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.btn-complete {
+  background: white;
+  border: 1px solid black;
+  padding: 8px 16px;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-complete:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Right Column Styling */
+.items-column h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.items-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.pizza-item {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.details-list {
+  list-style-type: circle;
+  padding-left: 25px;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+/* Animations */
+.order-entry {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.order-entry.removing {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+@media (max-width: 600px) {
+  .order-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
